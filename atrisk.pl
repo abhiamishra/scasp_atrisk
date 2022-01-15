@@ -1,4 +1,14 @@
 
+%%facts
+historyGrade(dan,90).
+scienceGrade(dan,90).
+mathGrade(dan,90).
+englishGrade(dan,90).
+esl(dan).
+goodAttendance(dan).
+
+
+%%rules
 %% GRADES AND ACADEMICS %%
 
 %%How to pass the grade
@@ -56,12 +66,6 @@ at_risk(X) :- badSchoolPast(X), not goodBehaviorWithOther(X).
 -at_risk(X) :- isHonorRoll(X).
 -at_risk(X) :- goodBehaviorWithOther(X), goodAttendance(X).
 
-historyGrade(dan,90).
-scienceGrade(dan,90).
-mathGrade(dan,90).
-englishGrade(dan,90).
-esl(dan).
-goodAttendance(dan).
-badSchoolPast(dan).
+maybe_at_risk(X) :- not goodBehaviorWithOther(X), academicallyGood(X).
 
 ?- at_risk(X).
