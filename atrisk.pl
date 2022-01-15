@@ -19,6 +19,19 @@ poorSchoolPast(X) :- hadDrop(X), not advanced(X).
 poorSchoolPast(X) :- not -isBullied(X), not advanced(X).
 poorSchoolPast(X) :- not -isBullied(X), hadDrop(X).
 
+%%How to pass the grade
+sciencePass(X) :- scienceGrade(X,A), A>=70.
+mathPass(X) :- mathGrade(X,A), A>=70.
+englishPass(X) :- englishGrade(X,A), A>=70.
+historyPass(X) :- historyGrade(X,A), A>=70.
+
+%%Find if the student is a STEM student
+isStem(X) :- sciencePass(X), mathPass(X), scienceGrade(X,A), mathGrade(X,B), A+B>=170.
+isSocSci(X) :- englishPass(X), historyPass(X), englishGrade(X,A), historyGrade(X,B), A+B>=170.
+isSocSci(X) :- esl(X), englishGrade(X,A), historyGrade(X,B), A+B>=150.
+isHonorRoll(X) :- scienceGrade(X,A), mathGrade(X,B), englishGrade(X,C), historyGrade(X,D), (A+B+C+D)/4>=90.
+
+
 motivatedStudent(X) :-
     goodAttendance(X),
     academiclyGood(X).
@@ -37,3 +50,4 @@ mathPass(Dan).
 goodAttendance(Dan).
 
 ?- at_risk(X).
+
