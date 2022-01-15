@@ -1,3 +1,21 @@
+%%facts
+at_risk(dan).
+maybe_at_risk(dan).
+
+effort(no).
+bad_mental_health(yes).
+is_alienated(yes).
+procrastinates(yes).
+unhappy_with_major(yes).
+academic_preparedness(yes).
+involved(no).
+grades_declining(yes).
+decreased_involvement(yes).
+missed_assignments(yes).
+skip_class(yes).
+
+
+%%rules
 alienated_student(X, Y):- at_risk(Y), is_alienated(X), not involved(X).
 alienated_student(X, Y):- maybe_at_risk(Y), is_alienated(X), not involved(X).
 alienated_response(X, Y):- alienated_student(X, Y), write('Try to communicate with people on a deeper level to develop friendships and a sense of belonging/community within your campus.').
