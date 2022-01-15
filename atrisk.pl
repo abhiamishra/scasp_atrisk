@@ -31,10 +31,19 @@ isSocSci(X) :- englishPass(X), historyPass(X), englishGrade(X,A), historyGrade(X
 isSocSci(X) :- esl(X), englishGrade(X,A), historyGrade(X,B), A+B>=150.
 isHonorRoll(X) :- scienceGrade(X,A), mathGrade(X,B), englishGrade(X,C), historyGrade(X,D), (A+B+C+D)/4>=90.
 
+%%Teacher-observed behavior
+findBehavior(X, [X|_]).
+findBehavior(X, [_|T]) :- findBehavior(X, T).
+immediate_risk(X) :- behavior(X), findBehavior(X,['violent','depressed','lonely','repressed','abused','harassed']).
+goodBehaviorWithOther(X) :- behavior(X), not findBehavior(X, ['distant', 'frustrated', 'agitated', 'alone', 'fearful', 'noncooperation', 'impulsive']).
+
 
 motivatedStudent(X) :-
     goodAttendance(X),
     academiclyGood(X).
+
+motivatedStudent(X) :- academicallyGood(X), goodBehaviorWithOther(X).
+
 
 at_risk(X) :- immediate_risk(X), not motivatedStudent(X).
 at_risk(X) :- not motivatedStudent(X), poorSchoolPast(X).
@@ -50,4 +59,3 @@ mathPass(Dan).
 goodAttendance(Dan).
 
 ?- at_risk(X).
-
