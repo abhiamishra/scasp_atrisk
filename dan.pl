@@ -16,6 +16,7 @@ at_risk(X) :- immediate_risk(X).
 at_risk(X) :- badSchoolPast(X), not goodBehaviorWithOther(X).
 -at_risk(X) :- motivatedStudent(X).
 -at_risk(X) :- isHonorRoll(X).
+-at_risk(X) :- goodBehaviorWithOther(X), goodAttendance(X), not -goodAttention(X).
 
 maybe_at_risk(X) :- not -at_risk(X), not at_risk(X).
 
