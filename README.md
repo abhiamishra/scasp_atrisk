@@ -1,3 +1,4 @@
+Devpost link: https://devpost.com/software/rise-risk-identifier-student-evaluation
 # Inspiration
 Each year, around one million students drop out of college. This statistic is only increasing in both college and secondary school, and it is caused by factors such as drugs, mental health issues, high stress, physical health issues, and socio-economic issues just to name a few. RISE was developed to help students and parents determine if a student is at risk of dropping out of school, and provides advice to prevent this from happening
 
